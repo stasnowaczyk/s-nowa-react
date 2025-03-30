@@ -1,56 +1,38 @@
-import { Grid, Box, Typography, Link, Card, CardContent, Button, CardActions } from '@mui/material';
+import { Grid, Box, Typography, Link } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import NowPlayingCard from './NowPlayingCard';
 
-const Item = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <Box
-            sx={{
-                padding: 2,
-                textAlign: 'center',
-                backgroundColor: '#f0f0f0',
-            }}
-        >
-            {children}
-        </Box>
-    );
-};
+const Item = ({ children }: { children: React.ReactNode }) => (
+    <Box
+        sx={{
+            padding: 2,
+            textAlign: 'center',
+            backgroundColor: '#f0f0f0',
+            height: '100%',
+        }}
+    >
+        {children}
+    </Box>
+);
 
 export default function Home() {
     return (
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-                <Box sx={{ flexGrow: 1 }}>
+                <Box sx={{ flexGrow: 1, width: '100%' }}>
                     <Grid container spacing={2}>
                         <Grid size={8}>
-                            <Card sx={{ minWidth: 275 }}>
-                                <CardContent>
-                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                                        Word of the Day
-                                    </Typography>
-                                    <Typography variant="h5" component="div">
-                                        Hello World
-                                    </Typography>
-                                    <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>adjective</Typography>
-                                    <Typography variant="body2">
-                                        well meaning and kindly.
-                                        <br />
-                                        {'"a benevolent smile"'}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
-                            </Card>
+                            <NowPlayingCard />
                         </Grid>
                         <Grid size={4}>
-                            <Item>size=4</Item>
+                            <Item>About Me</Item>
                         </Grid>
                         <Grid size={4}>
-                            <Item>size=4</Item>
+                            <Item>Projects</Item>
                         </Grid>
                         <Grid size={8}>
-                            <Item>size=8</Item>
+                            <Item>More Content</Item>
                         </Grid>
                     </Grid>
                 </Box>
@@ -58,20 +40,16 @@ export default function Home() {
             <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
                 <Box sx={{ textAlign: 'center', padding: 2 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                            Designed by
-                        </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                            <FontAwesomeIcon icon={faGithub} style={{ width: '14px', height: '14px' }} />
-                            <Link
-                                href="https://github.com/stasnowaczyk"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                underline="hover"
-                            >
-                                @stasnowaczyk
-                            </Link>
-                        </Box>
+                        <Typography variant="body2">Designed by</Typography>
+                        <Link
+                            href="https://github.com/stasnowaczyk"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+                        >
+                            <FontAwesomeIcon icon={faGithub} style={{ width: 14, height: 14 }} />
+                            @stasnowaczyk
+                        </Link>
                     </Box>
                 </Box>
             </footer>
