@@ -1,4 +1,6 @@
 import { Grid, Box, Typography, Link, Card, CardContent, Button, CardActions } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Item = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -55,17 +57,22 @@ export default function Home() {
             </main>
             <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
                 <Box sx={{ textAlign: 'center', padding: 2 }}>
-                    <Typography variant="body2" color="textSecondary">
-                        Designed by{' '}
-                        <Link
-                            href="https://github.com/stasnowaczyk"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            underline="hover"
-                        >
-                            Stas Nowaczyk
-                        </Link>
-                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            Designed by
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            <FontAwesomeIcon icon={faGithub} style={{ width: '14px', height: '14px' }} />
+                            <Link
+                                href="https://github.com/stasnowaczyk"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                underline="hover"
+                            >
+                                @stasnowaczyk
+                            </Link>
+                        </Box>
+                    </Box>
                 </Box>
             </footer>
         </div>
