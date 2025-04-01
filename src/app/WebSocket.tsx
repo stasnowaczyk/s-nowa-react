@@ -14,10 +14,16 @@ function WebSocketComponent() {
             };
 
             socketRef.current.onmessage = (event: MessageEvent) => {
-                if (event.data === 'ping') {
+                // Handle non-JSON messages like "ping" or "pong"
+                if (event.data === 'ping' || event.data === 'pong') {
                     socketRef.current?.send('pong'); // Respond to keep connection alive
-                } else {
-                    console.log('Message from server:', event.data);
+                    return;
+                }
+
+                try {
+                    console.log('Message from server:', JSON.parse(event.data));
+                } catch (err) {
+                    console.error('Error parsing WebSocket message:', err);
                 }
             };
 
